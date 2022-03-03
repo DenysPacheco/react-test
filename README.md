@@ -4,7 +4,7 @@ Mini test repo for react practice
 
 Honestlly, 'it feels gooood' 🤩.
 
-<img src="[drawing.jpg](https://i.pinimg.com/originals/b1/ed/80/b1ed80033a3060a68fbdc5573b6f6df2.jpg)" width="500px"/>
+![Bruce meme](https://i.pinimg.com/originals/b1/ed/80/b1ed80033a3060a68fbdc5573b6f6df2.jpg)
 
 React is nice because it centralizes the interface of data access (i.e.: `State` or [SSOT](https://en.wikipedia.org/wiki/Single_source_of_truth); or at least is the good practice 🤷), so any functionality that couples with the interface (or props) will have direct effect on other as well.
 
