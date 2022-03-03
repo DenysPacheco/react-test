@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import ListGroup from "react-bootstrap/ListGroup"
 import Button from "react-bootstrap/Button"
-// get our fontawesome imports
 import { faTrash, faRecycle, faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -9,8 +8,8 @@ const MarketList = (props) => {
     const { add, remove, reset, addList, removeList } = props
 
     let rows = ""
-    if (props.lista.length !== 0) {
-        rows = props.lista.map((item, index) => (
+    if (props.fruitsList.length !== 0) {
+        rows = props.fruitsList.map((item, index) => (
             <ListGroup.Item
                 key={index}
                 style={{
@@ -30,7 +29,11 @@ const MarketList = (props) => {
                         {item.count ? "(" + item.count + ")" : ""}
                     </span>
                 </div>
-                <div>
+                <div
+                    style={{
+                        marginLeft: "1rem",
+                    }}
+                >
                     <Button
                         variant="danger"
                         style={{
@@ -57,7 +60,7 @@ const MarketList = (props) => {
         ))
     }
 
-    const totalItems = props.lista.reduce(
+    const totalItems = props.fruitsList.reduce(
         (acc, item) => acc + (item.count === undefined ? 0 : item.count),
         0,
     )
@@ -98,7 +101,7 @@ const MarketList = (props) => {
                     removeList()
                 }}
             >
-                Excluir todos
+                Delete all &nbsp;
                 <FontAwesomeIcon icon={faTrash} />
             </Button>
             <Button
@@ -111,7 +114,7 @@ const MarketList = (props) => {
                     reset()
                 }}
             >
-                Resetar {totalItems ? "(" + totalItems + ")" : ""}
+                Reset&nbsp;{totalItems ? "(" + totalItems + ")" : ""}&nbsp;
                 <FontAwesomeIcon icon={faRecycle} />
             </Button>
         </div>

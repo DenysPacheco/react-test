@@ -1,18 +1,18 @@
 import React, { Component } from "react"
-import Lista from "../Objects/list.json"
+import JsonList from "../Objects/list.json"
 import MarketList from "../MarketList/marketList"
 
-const defaultList = Lista.items
+const defaultList = JsonList.items
 
 class List extends Component {
     state = {
-        lista: Lista.items,
+        fruitsList: JsonList.items,
     }
 
     add = (index) => {
         this.setState({
             ...this.state,
-            lista: this.state.lista.map((obj) => {
+            fruitsList: this.state.fruitsList.map((obj) => {
                 if (obj.id === index) {
                     return {
                         ...obj,
@@ -25,20 +25,20 @@ class List extends Component {
     }
 
     remove = (index) => {
-        let newLista = this.state.lista
-        delete newLista[index]
+        let newList = this.state.fruitsList
+        delete newList[index]
         this.setState({
             ...this.state,
-            lista: newLista,
+            fruitsList: newList,
         })
     }
 
     reset = () => {
-        this.state.lista === defaultList
+        this.state.fruitsList === defaultList
             ? alert("List has not changed!")
             : this.setState({
                   ...this.state,
-                  lista: defaultList,
+                  fruitsList: defaultList,
               })
     }
 
@@ -55,12 +55,12 @@ class List extends Component {
         }
 
         if (
-            !this.state.lista.filter((obj) => {
+            !this.state.fruitsList.filter((obj) => {
                 return obj.value === event.target.newItem.value
             }).length
         ) {
-            this.state.lista.push({
-                id: getMax("id", this.state.lista) + 1,
+            this.state.fruitsList.push({
+                id: getMax("id", this.state.fruitsList) + 1,
                 value: event.target.newItem.value,
             })
         }
@@ -68,20 +68,20 @@ class List extends Component {
         event.preventDefault()
         this.setState({
             ...this.state,
-            lista: this.state.lista,
+            fruitsList: this.state.fruitsList,
         })
     }
 
     removeList = () => {
-        this.setState({ ...this.state, lista: [] })
+        this.setState({ ...this.state, fruitsList: [] })
     }
 
     render() {
         return (
             <div>
-                <h1>{Lista.name}</h1>
+                <h1>{JsonList.name}</h1>
                 <MarketList
-                    lista={this.state.lista}
+                    fruitsList={this.state.fruitsList}
                     add={this.add}
                     remove={this.remove}
                     reset={this.reset}

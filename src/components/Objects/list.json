@@ -1,21 +1,21 @@
 {
-    "name": "Frutas",
+    "name": "Fruits",
     "items": [
         {
             "id": 1,
-            "value": "banana"
+            "value": "Banana"
         },
         {
             "id": 2,
-            "value": "limão"
+            "value": "Grape"
         },
         {
             "id": 3,
-            "value": "abacate"
+            "value": "Strawberry"
         },
         {
             "id": 4,
-            "value": "maçã"
+            "value": "Orange"
         }
     ]
 }
