@@ -1,6 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
-import List from './components/List/list'
+import logo from "./logo.svg"
+import "./App.css"
+import List from "./components/List/list"
 
 function App() {
     return (
@@ -21,7 +21,7 @@ function App() {
                 <List></List>
             </header>
         </div>
-    );
+    )
 }
 
-export default App;
+export default App

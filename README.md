@@ -6,11 +6,11 @@ Honestly, 'it feels gooood' 🤩.
 
 ![Bruce meme](https://i.pinimg.com/originals/b1/ed/80/b1ed80033a3060a68fbdc5573b6f6df2.jpg)
 
-React is nice because it centralizes the interface of data access (i.e.: `State` or [SSOT](https://en.wikipedia.org/wiki/Single_source_of_truth); or at least it should be a good practice 🤷), so any functionality that couples with the interface (or props) will have direct effect on other as well.
+React is nice because it centralizes the interface of data access (i.e.: `State` or [SSOT](https://en.wikipedia.org/wiki/Single_source_of_truth); or at least it should be a good practice 🤷), so any functionality that couples with the interface (or props) will have a direct effect on others as well. Plus for being simple 👍.
 
 ---
 
-### Critique
+### Critique, but not detailed
 
 #### Cons
 
@@ -20,7 +20,7 @@ React is nice because it centralizes the interface of data access (i.e.: `State`
 
 #### Pros
 
-- It's fun (my opnion)
+- It's fun (my opinion)
 - Simple to code or easy to create (since it's js and everything is connected)
-- Like said above, auto coupling of functionalitys since linked on a state
-- ✨ No reaload of pages for content 😍
+- Like said above, auto coupling of functionalities since linked on a state
+- ✨ No reload of pages for content 😍
