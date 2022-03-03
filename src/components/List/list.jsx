@@ -45,10 +45,11 @@ class List extends Component {
     addList = (event) => {
         function getMax(attr, arr) {
             const max = Math.max(
-                ...arr.map((obj) => {
+                ...arr.filter(Boolean).map((obj) => {
                     return obj.id
                 }),
             )
+            console.log(max)
             if (max === -Infinity || max === Infinity) return 0
             else return max
         }
