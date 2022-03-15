@@ -3,6 +3,8 @@ import ListGroup from "react-bootstrap/ListGroup"
 import Button from "react-bootstrap/Button"
 import { faTrash, faRecycle, faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.min.css"
 
 const MarketList = (props) => {
     const { add, remove, reset, addList, removeList } = props
@@ -41,6 +43,7 @@ const MarketList = (props) => {
                         }}
                         onClick={() => {
                             remove(index)
+                            toast.error(`Removed item: ${item.value}`)
                         }}
                     >
                         Remove <FontAwesomeIcon icon={faTrash} />
@@ -99,6 +102,7 @@ const MarketList = (props) => {
                 variant="danger"
                 onClick={() => {
                     removeList()
+                    toast.error("Removed list!")
                 }}
             >
                 Delete all &nbsp;
@@ -112,6 +116,8 @@ const MarketList = (props) => {
                 variant="primary"
                 onClick={() => {
                     reset()
+                        ? toast.success("List reseted!")
+                        : toast.warning("List can't be reseted!")
                 }}
             >
                 Reset&nbsp;{totalItems ? "(" + totalItems + ")" : ""}&nbsp;

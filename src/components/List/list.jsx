@@ -34,12 +34,16 @@ class List extends Component {
     }
 
     reset = () => {
-        this.state.fruitsList === defaultList
-            ? alert("List has not changed!")
-            : this.setState({
-                  ...this.state,
-                  fruitsList: defaultList,
-              })
+        if (this.state.fruitsList === defaultList) {
+            // alert("List has not changed!")
+            return false
+        } else {
+            this.setState({
+                ...this.state,
+                fruitsList: defaultList,
+            })
+            return true
+        }
     }
 
     addList = (event) => {
@@ -49,7 +53,6 @@ class List extends Component {
                     return obj.id
                 }),
             )
-            console.log(max)
             if (max === -Infinity || max === Infinity) return 0
             else return max
         }
