@@ -39,3 +39,11 @@
         transform: rotate(360deg);
     }
 }
+
+.list-group {
+    border-radius: 1rem !important;
+}
+
+.btn {
+    border-radius: 2rem !important;
+}

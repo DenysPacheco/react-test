@@ -1,6 +1,6 @@
 # React test
 
-Mini test repo for react practice.
+## Mini test repo for react practice.
 
 Honestly, 'it feels gooood' 🤩.
 
@@ -24,3 +24,25 @@ React is nice because it centralizes the interface of data access (i.e.: `State`
 - Simple to code or easy to create (since it's js and everything is connected)
 - Like said above, auto coupling of functionalities since linked on a state
 - ✨ No reload of pages for content 😍
+
+### Side notes
+
+#### Space
+
+- Space = `&nbsp;`
+
+#### [Material Icons](https://mui.com/components/material-icons/)
+
+- `npm i @material-ui/core @material-ui/icons`
+- `import { Icon } from '@material-ui/icons'`
+- `<Icon />'`
+
+> Only some icons work on the list
+
+#### [Toastify](https://www.google.com/search?channel=fs&q=toastify)
+
+- `import { ToastContainer, toast } from 'react-toastify'`
+- `import 'react-toastify/dist/ReactToastify.css'`
+- `toast("Wow so easy!")`
+
+> [Test it out](https://fkhadra.github.io/react-toastify/introduction/)

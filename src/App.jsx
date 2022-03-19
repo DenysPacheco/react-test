@@ -11,9 +11,10 @@ function App() {
                 <List></List>
                 <ToastContainer
                     style={{
-                        fontSize: "2vw",
+                        fontSize: "20px",
                     }}
                     theme="colored"
+                    limit={3}
                     position="bottom-left"
                     autoClose={5000}
                     hideProgressBar

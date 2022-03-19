@@ -2,17 +2,21 @@ import React, { Component } from "react"
 import JsonList from "../Objects/list.json"
 import MarketList from "../MarketList/marketList"
 
-const defaultList = JsonList.items
+const copy = (obj) => JSON.parse(JSON.stringify(obj))
+const defaultList = copy(JsonList.items)
+let hist = []
+const MAXITEMS = 10
 
 class List extends Component {
     state = {
-        fruitsList: JsonList.items,
+        fruitsList: defaultList,
     }
 
     add = (index) => {
-        this.setState({
-            ...this.state,
-            fruitsList: this.state.fruitsList.map((obj) => {
+        let item = this.state.fruitsList.find((obj) => obj.id === index)
+        if (item.count >= MAXITEMS) return [false, "Maximum limit reached!"]
+        else {
+            let newList = copy(this.state.fruitsList).map((obj) => {
                 if (obj.id === index) {
                     return {
                         ...obj,
@@ -20,13 +24,20 @@ class List extends Component {
                     }
                 }
                 return obj
-            }),
-        })
+            })
+
+            this.setState({
+                ...this.state,
+                fruitsList: newList,
+            })
+
+            return [true, "Added +1"]
+        }
     }
 
     remove = (index) => {
-        let newList = this.state.fruitsList
-        delete newList[index]
+        let newList = copy(this.state.fruitsList)
+        newList = newList.filter((obj) => obj.id !== index)
         this.setState({
             ...this.state,
             fruitsList: newList,
@@ -34,49 +45,83 @@ class List extends Component {
     }
 
     reset = () => {
-        if (this.state.fruitsList === defaultList) {
-            // alert("List has not changed!")
-            return false
+        let count = this.state.fruitsList.reduce(
+            (acc, item) => acc + (item?.count || 0),
+            0,
+        )
+
+        if (this.state.fruitsList.length && !count) {
+            return [false, "List already zeroed!"]
+        } else if (!this.state.fruitsList.length) {
+            if (hist.length) {
+                this.setState({
+                    ...this.state,
+                    fruitsList: hist,
+                })
+                return [true, "List restored!"]
+            }
+            return [false, "Can't reset empty list!"]
         } else {
+            let newList = copy(this.state.fruitsList).map((obj) => ({
+                ...obj,
+                count: 0,
+            }))
             this.setState({
                 ...this.state,
-                fruitsList: defaultList,
+                fruitsList: newList,
             })
-            return true
+            return [true, "List reseted!"]
         }
     }
 
     addList = (event) => {
+        event.preventDefault()
+
+        const item = event.target.newItem.value
+
+        if (item === "") {
+            return [false, "Can't add empty item"]
+        }
+
         function getMax(attr, arr) {
             const max = Math.max(
-                ...arr.filter(Boolean).map((obj) => {
+                ...arr.map((obj) => {
                     return obj.id
                 }),
             )
-            if (max === -Infinity || max === Infinity) return 0
-            else return max
+            return isFinite(max) ? max : 0
         }
 
         if (
-            !this.state.fruitsList.filter((obj) => {
-                return obj.value === event.target.newItem.value
-            }).length
-        ) {
-            this.state.fruitsList.push({
-                id: getMax("id", this.state.fruitsList) + 1,
-                value: event.target.newItem.value,
+            !this.state.fruitsList.some((obj) => {
+                return obj.value === item
             })
-        }
+        ) {
+            this.setState((prevState) => ({
+                ...this.state,
+                fruitsList: [
+                    ...prevState.fruitsList,
+                    {
+                        id: getMax("id", this.state.fruitsList) + 1,
+                        value: item,
+                    },
+                ],
+            }))
 
-        event.preventDefault()
-        this.setState({
-            ...this.state,
-            fruitsList: this.state.fruitsList,
-        })
+            return [true, "Item added!"]
+        } else {
+            return [false, "Can't add existing item!"]
+        }
     }
 
     removeList = () => {
-        this.setState({ ...this.state, fruitsList: [] })
+        if (this.state.fruitsList.length) {
+            hist = copy(this.state.fruitsList)
+            this.setState({ ...this.state, fruitsList: [] })
+            return [true, "List removed!"]
+        } else {
+            return [false, "Cant remove empty list!"]
+        }
     }
 
     render() {
@@ -84,12 +129,13 @@ class List extends Component {
             <div>
                 <h1>{JsonList.name}</h1>
                 <MarketList
-                    fruitsList={this.state.fruitsList}
+                    fruitsList={copy(this.state.fruitsList)}
                     add={this.add}
                     remove={this.remove}
                     reset={this.reset}
                     addList={this.addList}
                     removeList={this.removeList}
+                    MAXITEMS={this.MAXITEMS}
                 />
             </div>
         )

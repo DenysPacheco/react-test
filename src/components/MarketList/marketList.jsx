@@ -1,77 +1,113 @@
+import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import ListGroup from "react-bootstrap/ListGroup"
-import Button from "react-bootstrap/Button"
-import { faTrash, faRecycle, faPlus } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { ListGroup, Button } from "react-bootstrap"
+import { Delete, Add, Loop } from "@material-ui/icons"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
 
-const MarketList = (props) => {
-    const { add, remove, reset, addList, removeList } = props
+class MarketList extends Component {
+    constructor(props) {
+        super(props)
 
-    let rows = ""
-    if (props.fruitsList.length !== 0) {
-        rows = props.fruitsList.map((item, index) => (
-            <ListGroup.Item
-                key={index}
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    background: "#a6adb9",
-                    width: "auto",
-                }}
-            >
-                <div>
-                    <span
-                        style={{
-                            verticalAlign: "middle",
-                        }}
-                    >
-                        {item.id}. {item.value}{" "}
-                        {item.count ? "(" + item.count + ")" : ""}
-                    </span>
-                </div>
-                <div
-                    style={{
-                        marginLeft: "1rem",
-                    }}
-                >
-                    <Button
-                        variant="danger"
-                        style={{
-                            marginLeft: ".5rem",
-                        }}
-                        onClick={() => {
-                            remove(index)
-                            toast.error(`Removed item: ${item.value}`)
-                        }}
-                    >
-                        Remove <FontAwesomeIcon icon={faTrash} />
-                    </Button>
-                    <Button
-                        style={{
-                            marginLeft: ".5rem",
-                        }}
-                        onClick={() => {
-                            add(item.id)
-                        }}
-                    >
-                        Add <FontAwesomeIcon icon={faPlus} />
-                    </Button>
-                </div>
-            </ListGroup.Item>
-        ))
+        this.state = { query: "" }
+
+        this.add = this.props.add.bind(this)
+        this.remove = this.props.remove.bind(this)
+        this.reset = this.props.reset.bind(this)
+        this.addList = this.props.addList.bind(this)
+        this.removeList = this.props.removeList.bind(this)
     }
 
-    const totalItems = props.fruitsList.reduce(
-        (acc, item) => acc + (item.count === undefined ? 0 : item.count),
-        0,
-    )
+    totalItems = () => {
+        return this.props.fruitsList.reduce(
+            (acc, item) => acc + (item?.count || 0),
+            0,
+        )
+    }
 
-    const FormInputItem = () => {
+    searchItem = (item) => {
+        if (this.state.query === "" || this.state.query === undefined)
+            return true
+        else {
+            return item.value
+                .toLowerCase()
+                .includes(this.state.query.toLowerCase())
+        }
+    }
+
+    Content = () => {
+        if (this.props.fruitsList.length !== 0) {
+            return this.props.fruitsList
+                .filter(this.searchItem)
+                .map((item, index) => (
+                    <ListGroup.Item
+                        key={index}
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            background: "#a6adb9",
+                            width: "auto",
+                        }}
+                    >
+                        <div>
+                            <span
+                                style={{
+                                    verticalAlign: "middle",
+                                }}
+                            >
+                                {item.id}. {item.value}{" "}
+                                {item.count ? "(" + item.count + ")" : ""}
+                            </span>
+                        </div>
+                        <div
+                            style={{
+                                marginLeft: "1rem",
+                            }}
+                        >
+                            <Button
+                                variant="danger"
+                                style={{
+                                    marginLeft: ".5rem",
+                                }}
+                                onClick={() => {
+                                    this.remove(item.id)
+                                    toast.error(`Item removed: ${item.value}`)
+                                }}
+                            >
+                                Remove <Delete />
+                            </Button>
+                            <Button
+                                style={{
+                                    marginLeft: ".5rem",
+                                }}
+                                title={`Maximum ${this.props.MAXITEMS}`}
+                                onClick={() => {
+                                    let [confirmation, message] = this.add(
+                                        item.id,
+                                    )
+                                    confirmation
+                                        ? toast()
+                                        : toast.warning(message)
+                                }}
+                            >
+                                Add <Add />
+                            </Button>
+                        </div>
+                    </ListGroup.Item>
+                ))
+        }
+        return false
+    }
+
+    FormInputItem = () => {
         return (
             <form
-                onSubmit={addList}
+                onSubmit={(event) => {
+                    this.setState({ query: "" })
+
+                    let [confirmation, message] = this.addList(event)
+                    confirmation ? toast() : toast.warning(message)
+                }}
                 style={{
                     marginBottom: "1rem",
                     fontSize: "20px",
@@ -80,51 +116,67 @@ const MarketList = (props) => {
                 <input
                     type="text"
                     name="newItem"
+                    value={this.state.query}
                     style={{
                         borderRadius: "1rem",
                         maxWidth: "12rem",
                         padding: "0 .5rem",
                     }}
                     placeholder="Insert new item"
+                    onChange={(event) => {
+                        this.setState({ query: event.target.value })
+                    }}
                 ></input>
+                <Button type="submit" className="mx-2" variant="success">
+                    <Add />
+                    &nbsp; Add to list
+                </Button>
             </form>
         )
     }
 
-    return (
-        <div className="m-auto">
-            <FormInputItem></FormInputItem>
-            <ListGroup key="group">{rows}</ListGroup>
-            <Button
-                style={{
-                    margin: "1rem .3rem",
-                }}
-                variant="danger"
-                onClick={() => {
-                    removeList()
-                    toast.error("Removed list!")
-                }}
-            >
-                Delete all &nbsp;
-                <FontAwesomeIcon icon={faTrash} />
-            </Button>
-            <Button
-                style={{
-                    // marginTop: "1rem",
-                    margin: "1rem .3rem",
-                }}
-                variant="primary"
-                onClick={() => {
-                    reset()
-                        ? toast.success("List reseted!")
-                        : toast.warning("List can't be reseted!")
-                }}
-            >
-                Reset&nbsp;{totalItems ? "(" + totalItems + ")" : ""}&nbsp;
-                <FontAwesomeIcon icon={faRecycle} />
-            </Button>
-        </div>
-    )
+    render() {
+        return (
+            <div className="m-auto">
+                <this.FormInputItem />
+                <ListGroup key="group">
+                    <this.Content />
+                </ListGroup>
+                <Button
+                    style={{
+                        margin: "1rem .3rem",
+                    }}
+                    variant="danger"
+                    onClick={() => {
+                        let [confirmation, message] = this.removeList()
+                        confirmation
+                            ? toast.error(message)
+                            : toast.warning(message)
+                    }}
+                >
+                    Delete all &nbsp;
+                    <Delete />
+                </Button>
+                <Button
+                    style={{
+                        margin: "1rem .3rem",
+                    }}
+                    variant="primary"
+                    onClick={() => {
+                        let [confirmation, message] = this.reset()
+                        confirmation
+                            ? toast.success(message)
+                            : toast.warning(message)
+                    }}
+                >
+                    Reset&nbsp;
+                    {this.totalItems() ? "(" + this.totalItems() + ")" : ""}
+                    &nbsp;
+                    <Loop />
+                </Button>
+            </div>
+        )
+    }
 }
 
 export default MarketList
