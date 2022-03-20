@@ -1,13 +1,16 @@
 import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { ListGroup, Button } from "react-bootstrap"
+import { ListGroup, Button, Form } from "react-bootstrap"
 import { Delete, Add, Loop } from "@material-ui/icons"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
+import "./marketList.css"
 
 class MarketList extends Component {
     constructor(props) {
         super(props)
+
+        console.log(this.props.MAXITEMS)
 
         this.state = { query: "" }
 
@@ -42,44 +45,43 @@ class MarketList extends Component {
                 .map((item, index) => (
                     <ListGroup.Item
                         key={index}
-                        style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            background: "#a6adb9",
-                            width: "auto",
-                        }}
+                        title={item.value}
+                        className={`list-item ${
+                            this.props.darkmode ? "list-item-dark" : ""
+                        }`}
                     >
-                        <div>
-                            <span
-                                style={{
-                                    verticalAlign: "middle",
-                                }}
-                            >
-                                {item.id}. {item.value}{" "}
+                        <div className="d-flex">
+                            <div className="list-item-id">{item.id}.&nbsp;</div>
+                            <div className="list-item-value">{item.value} </div>
+                            <div>
                                 {item.count ? "(" + item.count + ")" : ""}
-                            </span>
+                            </div>
                         </div>
-                        <div
-                            style={{
-                                marginLeft: "1rem",
-                            }}
-                        >
+                        <div className="list-item-btn-group">
                             <Button
+                                className={`list-item-btn
+                            ${
+                                this.props.darkmode
+                                    ? "list-item-btn-dark list-item-btn-danger-dark"
+                                    : ""
+                            }`}
+                                title="Remove from list"
                                 variant="danger"
-                                style={{
-                                    marginLeft: ".5rem",
-                                }}
                                 onClick={() => {
                                     this.remove(item.id)
                                     toast.error(`Item removed: ${item.value}`)
                                 }}
                             >
-                                Remove <Delete />
+                                Remove
+                                <Delete />
                             </Button>
                             <Button
-                                style={{
-                                    marginLeft: ".5rem",
-                                }}
+                                className={`list-item-btn
+                                ${
+                                    this.props.darkmode
+                                        ? "list-item-btn-dark list-item-btn-primary-dark"
+                                        : ""
+                                }`}
                                 title={`Maximum ${this.props.MAXITEMS}`}
                                 onClick={() => {
                                     let [confirmation, message] = this.add(
@@ -90,7 +92,8 @@ class MarketList extends Component {
                                         : toast.warning(message)
                                 }}
                             >
-                                Add <Add />
+                                Add
+                                <Add />
                             </Button>
                         </div>
                     </ListGroup.Item>
@@ -101,37 +104,41 @@ class MarketList extends Component {
 
     FormInputItem = () => {
         return (
-            <form
+            <Form
+                className="add-list-group"
                 onSubmit={(event) => {
                     this.setState({ query: "" })
 
                     let [confirmation, message] = this.addList(event)
                     confirmation ? toast() : toast.warning(message)
                 }}
-                style={{
-                    marginBottom: "1rem",
-                    fontSize: "20px",
-                }}
             >
                 <input
                     type="text"
                     name="newItem"
                     value={this.state.query}
-                    style={{
-                        borderRadius: "1rem",
-                        maxWidth: "12rem",
-                        padding: "0 .5rem",
-                    }}
+                    className={`input-search ${
+                        this.props.darkmode ? "input-search-dark" : ""
+                    }`}
                     placeholder="Insert new item"
                     onChange={(event) => {
                         this.setState({ query: event.target.value })
                     }}
                 ></input>
-                <Button type="submit" className="mx-2" variant="success">
+                <Button
+                    type="submit"
+                    className={`"list-item-btn input-add-list mx-2"
+                    ${
+                        this.props.darkmode
+                            ? "list-item-btn-dark list-item-btn-success-dark"
+                            : ""
+                    }`}
+                    variant="success"
+                >
                     <Add />
                     &nbsp; Add to list
                 </Button>
-            </form>
+            </Form>
         )
     }
 
@@ -139,41 +146,55 @@ class MarketList extends Component {
         return (
             <div className="m-auto">
                 <this.FormInputItem />
-                <ListGroup key="group">
+                <ListGroup className="list-group-table" key="group">
                     <this.Content />
                 </ListGroup>
-                <Button
-                    style={{
-                        margin: "1rem .3rem",
-                    }}
-                    variant="danger"
-                    onClick={() => {
-                        let [confirmation, message] = this.removeList()
-                        confirmation
-                            ? toast.error(message)
-                            : toast.warning(message)
-                    }}
-                >
-                    Delete all &nbsp;
-                    <Delete />
-                </Button>
-                <Button
-                    style={{
-                        margin: "1rem .3rem",
-                    }}
-                    variant="primary"
-                    onClick={() => {
-                        let [confirmation, message] = this.reset()
-                        confirmation
-                            ? toast.success(message)
-                            : toast.warning(message)
-                    }}
-                >
-                    Reset&nbsp;
-                    {this.totalItems() ? "(" + this.totalItems() + ")" : ""}
-                    &nbsp;
-                    <Loop />
-                </Button>
+                {!this.state.query ? (
+                    <>
+                        <Button
+                            className={`button
+                            ${
+                                this.props.darkmode
+                                    ? "list-item-btn-dark list-item-btn-danger-dark"
+                                    : ""
+                            }`}
+                            variant="danger"
+                            onClick={() => {
+                                let [confirmation, message] = this.removeList()
+                                confirmation
+                                    ? toast.error(message)
+                                    : toast.warning(message)
+                            }}
+                        >
+                            Delete all &nbsp;
+                            <Delete />
+                        </Button>
+                        <Button
+                            className={`button
+                            ${
+                                this.props.darkmode
+                                    ? "list-item-btn-dark list-item-btn-primary-dark"
+                                    : ""
+                            }`}
+                            variant="primary"
+                            onClick={() => {
+                                let [confirmation, message] = this.reset()
+                                confirmation
+                                    ? toast.success(message)
+                                    : toast.warning(message)
+                            }}
+                        >
+                            Reset&nbsp;
+                            {this.totalItems()
+                                ? "(" + this.totalItems() + ")"
+                                : ""}
+                            &nbsp;
+                            <Loop />
+                        </Button>
+                    </>
+                ) : (
+                    false
+                )}
             </div>
         )
     }

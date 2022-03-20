@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap");
+
+.button {
+    margin: 1rem 0.3rem;
+}
+
+.add-list-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.input-add-list {
+    margin-top: 0.5rem;
+}
+
+.input-search {
+    border-radius: 1rem;
+    max-width: 12rem;
+    padding: 0 0.7rem;
+    font-size: 18px;
+    width: 10rem;
+}
+
+.input-search-dark {
+    background: #202327;
+    color: #c8c8c8;
+    border-color: #61dafb;
+}
+
+.list-group-table {
+    width: max-content;
+    margin-top: 1rem;
+    max-width: 36rem;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    background: #a6adb9;
+    width: auto;
+}
+
+.list-item-dark {
+    background: #16181c;
+    color: #c8c8c8;
+}
+
+.list-item-id {
+    font-size: 14px;
+    color: gray;
+    height: min-content;
+    width: min-content;
+    margin-right: 5px;
+}
+
+.list-item-value {
+    font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20rem;
+}
+
+.list-item-btn-group {
+    margin-left: 1rem;
+}
+
+.list-item-btn {
+    margin-left: 0.5rem;
+    padding: 0.4rem;
+}
+
+.list-item-btn-dark {
+    background: transparent;
+}
+
+.list-item-btn-danger-dark {
+    color: #bb2d3b;
+}
+.list-item-btn-primary-dark {
+    color: #0d6efd;
+}
+.list-item-btn-success-dark {
+    color: #157347;
+}

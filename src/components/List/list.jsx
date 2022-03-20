@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import JsonList from "../Objects/list.json"
 import MarketList from "../MarketList/marketList"
+import "./list.css"
 
 const copy = (obj) => JSON.parse(JSON.stringify(obj))
 const defaultList = copy(JsonList.items)
@@ -127,7 +128,7 @@ class List extends Component {
     render() {
         return (
             <div>
-                <h1>{JsonList.name}</h1>
+                <h1 className="list-title">{JsonList.name}</h1>
                 <MarketList
                     fruitsList={copy(this.state.fruitsList)}
                     add={this.add}
@@ -135,7 +136,8 @@ class List extends Component {
                     reset={this.reset}
                     addList={this.addList}
                     removeList={this.removeList}
-                    MAXITEMS={this.MAXITEMS}
+                    MAXITEMS={MAXITEMS}
+                    darkmode={this.props.darkmode}
                 />
             </div>
         )
