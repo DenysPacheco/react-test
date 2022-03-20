@@ -8,6 +8,8 @@ Honestly, 'it feels gooood' 🤩.
 
 React is nice because it centralizes the interface of data access (i.e.: `State` or [SSOT](https://en.wikipedia.org/wiki/Single_source_of_truth); or at least it should be a good practice 🤷), so any functionality that couples with the interface (or props) will have a direct effect on others as well. Plus for being simple 👍.
 
+View: [gh-pages](https://denyspacheco.github.io/react-test/)
+
 ---
 
 ### Critique, but not detailed
