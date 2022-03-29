@@ -10,8 +10,6 @@ class MarketList extends Component {
     constructor(props) {
         super(props)
 
-        console.log(this.props.MAXITEMS)
-
         this.state = { query: "" }
 
         this.add = this.props.add.bind(this)
@@ -119,7 +117,8 @@ class MarketList extends Component {
                     value={this.state.query}
                     className={`input-search ${
                         this.props.darkmode ? "input-search-dark" : ""
-                    }`}
+                    }
+                    `}
                     placeholder="Insert new item"
                     onChange={(event) => {
                         this.setState({ query: event.target.value })
@@ -132,7 +131,15 @@ class MarketList extends Component {
                         this.props.darkmode
                             ? "list-item-btn-dark list-item-btn-success-dark"
                             : ""
-                    }`}
+                    }
+                    ${
+                        this.state.query
+                            ? ""
+                            : this.props.darkmode
+                            ? "disabled disabled-dark"
+                            : "disabled"
+                    }
+                    `}
                     variant="success"
                 >
                     <Add />
@@ -157,7 +164,15 @@ class MarketList extends Component {
                                 this.props.darkmode
                                     ? "list-item-btn-dark list-item-btn-danger-dark"
                                     : ""
-                            }`}
+                            }
+                            ${
+                                this.props.fruitsList.length
+                                    ? ""
+                                    : this.props.darkmode
+                                    ? "disabled disabled-dark"
+                                    : "disabled"
+                            }
+                            `}
                             variant="danger"
                             onClick={() => {
                                 let [confirmation, message] = this.removeList()
@@ -175,7 +190,17 @@ class MarketList extends Component {
                                 this.props.darkmode
                                     ? "list-item-btn-dark list-item-btn-primary-dark"
                                     : ""
-                            }`}
+                            }
+
+                            ${
+                                this.totalItems() ||
+                                !this.props.fruitsList.length
+                                    ? ""
+                                    : this.props.darkmode
+                                    ? "disabled disabled-dark"
+                                    : "disabled"
+                            }
+                            `}
                             variant="primary"
                             onClick={() => {
                                 let [confirmation, message] = this.reset()

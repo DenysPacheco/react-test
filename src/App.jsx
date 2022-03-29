@@ -32,7 +32,6 @@ function App() {
                 <img src={logo} className="App-logo" alt="logo" />
                 <List darkmode={darkmode}></List>
                 <ToastContainer
-                    className="toast-container"
                     theme="colored"
                     limit={3}
                     position="bottom-left"

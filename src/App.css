@@ -25,11 +25,13 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    transition: all 0.3s ease-in-out;
 }
 
 .App-header-dark {
     background-color: #000000;
     color: white;
+    transition: all 0.3s ease-in-out;
 }
 
 .App-link {
@@ -51,15 +53,33 @@
 
 .btn {
     border-radius: 2rem !important;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn-darkmode {
+    transition: all 0.3s ease-in-out;
     display: flex;
     position: absolute;
     right: 0;
     margin: 1rem;
 }
 
-.toast-container {
-    font-size: 20px;
+.Toastify__toast-body {
+    /* color: #444c63; */
+    font-size: 16px;
+    padding-left: 20px;
+    line-height: 20px;
+    padding: 0px;
+    padding-top: 25px;
+    width: 100%;
+    font-weight: 400;
+    margin-left: 25px !important;
+}
+
+.Toastify__toast {
+    border-radius: 2rem !important;
+}
+
+.Toastify__toast > button > svg {
+    display: none;
 }
