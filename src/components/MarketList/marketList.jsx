@@ -31,8 +31,9 @@ const MarketList = (props) => {
   return (
     <div className="m-auto">
       <FormInputItem
-        query={query}  
-        setQuery={setQuery}  
+        query={query}
+        setQuery={setQuery}
+        addList={props.addList}
       />
       <ListGroup className="list-group-table" key="group">
         <ListContent
@@ -40,6 +41,8 @@ const MarketList = (props) => {
           fruitsList={props.fruitsList}
           MAXITEMS={props.MAXITEMS}
           searchItem={searchItem}
+          remove={props.remove}
+          add={props.add}
         />
       </ListGroup>
       {!query ? (
