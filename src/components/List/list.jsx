@@ -106,7 +106,7 @@ const List = (props) => {
   }
 
   return (
-    <div class='list-container'>
+    <div className='list-container'>
       <h1 className="list-title">{JsonList.name}</h1>
       <MarketList
         fruitsList={fruitsList}
