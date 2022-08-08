@@ -3,12 +3,11 @@
 ## Mini test repo for react practice.
 
 Honestly, 'it feels gooood' 🤩.
+View: [gh-pages](https://denyspacheco.github.io/react-test/)
 
 ![Bruce meme](https://i.pinimg.com/originals/b1/ed/80/b1ed80033a3060a68fbdc5573b6f6df2.jpg)
 
 React is nice because it centralizes the interface of data access (i.e.: `State` or [SSOT](https://en.wikipedia.org/wiki/Single_source_of_truth); or at least it should be a good practice 🤷), so any functionality that couples with the interface (or props) will have a direct effect on others as well. Plus for being simple 👍.
-
-View: [gh-pages](https://denyspacheco.github.io/react-test/)
 
 ---
 
