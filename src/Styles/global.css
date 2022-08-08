@@ -1,0 +1,58 @@
+.btn {
+  border-radius: 2rem !important;
+  transition: all 0.3s ease-in-out;
+  margin: 0.3rem;
+}
+
+.group-btn-options {
+  position: absolute;
+  right: 0;
+  margin: 1rem;
+}
+
+.list-item-btn {
+  margin-left: 0.5rem;
+  /* padding: 0.4rem; */
+}
+
+.list-item-btn-dark {
+  background: transparent !important;
+}
+
+.list-item-btn-danger-dark {
+  color: #bb2d3b;
+}
+
+.list-item-btn-primary-dark {
+  color: #0d6efd;
+}
+
+.list-item-btn-secondary-dark {
+  color: #6c757d;
+}
+
+.list-item-btn-success-dark {
+  color: #157347;
+}
+
+.disabled-dark {
+  color: grey !important;
+  border-color: grey !important;
+  opacity: 0.4 !important;
+  /* color: #0d6efd !important; */
+  /* background-color: transparent !important; */
+  /* border-color: #0d6efd !important; */
+}
+
+.label-dark {
+  color: #c8c8c8;
+}
+
+.list-group {
+  border-radius: 1rem !important;
+}
+
+/* OVERRIDE */
+.MuiSvgIcon-root {
+  vertical-align: bottom;
+}

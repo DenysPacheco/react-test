@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import "bootstrap/dist/css/bootstrap.min.css"
 import { ListGroup, Button } from "react-bootstrap"
 import { Delete, Loop } from "@material-ui/icons"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import "./marketList.css"
+import "../../Styles/global.css"
 import ListContent from "./listContent"
 import FormInputItem from "../Form/form"
 
@@ -34,21 +35,27 @@ const MarketList = (props) => {
         query={query}
         setQuery={setQuery}
         addList={props.addList}
+        labels={props.labels}
+        darkmode={props.darkmode}
       />
       <ListGroup className="list-group-table" key="group">
         <ListContent
           darkmode={props.darkmode}
           fruitsList={props.fruitsList}
           MAXITEMS={props.MAXITEMS}
+          MINITEMS={props.MINITEMS}
           searchItem={searchItem}
           remove={props.remove}
           add={props.add}
+          minus={props.minus}
+          labels={props.labels}
+          typingX={props.typingX}
         />
       </ListGroup>
       {!query ? (
         <>
           <Button
-            className={`button
+            className={`btn
                             ${props.darkmode
                 ? "list-item-btn-dark list-item-btn-danger-dark"
                 : ""
@@ -68,11 +75,11 @@ const MarketList = (props) => {
                 : toast.warning(message)
             }}
           >
-            Delete all &nbsp;
+            {!props.labels ? 'Delete all ' : ''}
             <Delete />
           </Button>
           <Button
-            className={`button
+            className={`btn
                             ${props.darkmode
                 ? "list-item-btn-dark list-item-btn-primary-dark"
                 : ""
@@ -88,17 +95,17 @@ const MarketList = (props) => {
                             `}
             variant="primary"
             onClick={() => {
-              let [confirmation, message] = props.reset()
-              confirmation
-                ? toast.success(message)
-                : toast.warning(message)
+              props.reset()
+              // let [confirmation, message] = props.reset()
+              // confirmation
+              //   ? toast.success(message)
+              //   : toast.warning(message)
             }}
           >
-            Reset&nbsp;
+            {!props.labels ? 'Reset ' : ''}
             {totalItems()
               ? "(" + totalItems() + ")"
               : ""}
-            &nbsp;
             <Loop />
           </Button>
         </>

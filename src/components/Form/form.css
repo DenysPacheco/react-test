@@ -1,0 +1,24 @@
+.input-add-list {
+  margin: 0.5rem;
+}
+
+.input-search {
+  border-radius: 1rem;
+  max-width: 12rem;
+  padding: 0 0.7rem;
+  font-size: 18px;
+  width: 10rem;
+}
+
+.input-search-dark {
+  background: #202327;
+  color: #c8c8c8;
+  border-color: #61dafb;
+}
+
+.add-list-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}

@@ -10,6 +10,7 @@
   pointer-events: none;
 }
 
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -46,23 +47,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.list-group {
-  border-radius: 1rem !important;
-}
-
-.btn {
-  border-radius: 2rem !important;
-  transition: all 0.3s ease-in-out;
-}
-
-.btn-darkmode {
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  position: absolute;
-  right: 0;
-  margin: 1rem;
 }
 
 .Toastify__toast-body {

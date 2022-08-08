@@ -1,10 +1,11 @@
 import React from "react"
-import "bootstrap/dist/css/bootstrap.min.css"
 import { ListGroup, Button } from "react-bootstrap"
-import { Delete, Add } from "@material-ui/icons"
+import { Delete, Add, Remove } from "@material-ui/icons"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import "./marketList.css"
+import "../../Styles/global.css"
 
 const ListContent = (props) => {
   if (props.fruitsList.length !== 0) {
@@ -13,16 +14,22 @@ const ListContent = (props) => {
       .map((item, index) => (
         <ListGroup.Item
           key={index}
-          title={item.value}
           className={`list-item ${props.darkmode ? "list-item-dark" : ""
             }`}
         >
-          <div className="d-flex">
-            <div className="list-item-id">{item.id}.&nbsp;</div>
-            <div className="list-item-value">{item.value} </div>
-            <div>
-              {item.count ? "(" + item.count + ")" : ""}
-            </div>
+          <div className="d-flex list-item-info" title={item.value}>
+            <div className="list-item-id">{item.id}. </div>
+            {props.typingX &&
+              <div className='list-item-count'>
+                {item.count ? `${item.count}x ` : ""}
+              </div>}
+
+            <div className="list-item-value">{item.value}</div>
+
+            {!props.typingX &&
+              <div className='list-item-count'>
+                {item.count ? ` (${item.count})` : ""}
+              </div>}
           </div>
           <div className="list-item-btn-group">
             <Button
@@ -38,8 +45,28 @@ const ListContent = (props) => {
                 toast.error(`Item removed: ${item.value}`)
               }}
             >
-              Remove
+              {!props.labels ? 'Remove ' : ''}
               <Delete />
+            </Button>
+            <Button
+              className={`list-item-btn
+                              ${props.darkmode
+                  ? "list-item-btn-dark list-item-btn-secondary-dark"
+                  : ""
+                }`}
+              title={`Minimum ${props.MINITEMS}`}
+              variant="secondary"
+              onClick={() => {
+                let [confirmation, message] = props.minus(
+                  item.id,
+                )
+                confirmation
+                  ? toast()
+                  : toast.warning(message)
+              }}
+            >
+              {!props.labels ? 'Minus ' : ''}
+              <Remove />
             </Button>
             <Button
               className={`list-item-btn
@@ -48,6 +75,7 @@ const ListContent = (props) => {
                   : ""
                 }`}
               title={`Maximum ${props.MAXITEMS}`}
+              variant="primary"
               onClick={() => {
                 let [confirmation, message] = props.add(
                   item.id,
@@ -57,7 +85,7 @@ const ListContent = (props) => {
                   : toast.warning(message)
               }}
             >
-              Add
+              {!props.labels ? 'Add' : ''}
               <Add />
             </Button>
           </div>

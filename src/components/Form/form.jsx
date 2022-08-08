@@ -4,6 +4,8 @@ import { Button, Form } from "react-bootstrap"
 import { Add } from "@material-ui/icons"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
+import './form.css'
+import "../../Styles/global.css"
 
 const FormInputItem = (props) => {
 
@@ -12,7 +14,7 @@ const FormInputItem = (props) => {
 
   return (
     <Form
-      className="add-list-group"
+      className='add-list-group d-flex flex-row justify-content-center'
       onSubmit={(event) => {
         setQuery('')
 
@@ -34,25 +36,18 @@ const FormInputItem = (props) => {
       ></input>
       <Button
         type="submit"
-        className={`"list-item-btn input-add-list mx-2"
-                  ${props.darkmode
-            ? "list-item-btn-dark list-item-btn-success-dark"
-            : ""
-          }
-                  ${query
-            ? ""
-            : props.darkmode
-              ? "disabled disabled-dark"
-              : "disabled"
-          }
+        className={`list-item-btn input-add-list mx-2
+                    ${props.darkmode ? 'list-item-btn-dark list-item-btn-success-dark' : ''}
+                    ${query ? '' : (props.darkmode ? 'disabled disabled-dark' : 'disabled')}
                   `}
         variant="success"
       >
+        {!props.labels ? 'Add to list ' : ''}
         <Add />
-        &nbsp; Add to list
       </Button>
     </Form>
   )
 }
+
 
 export default FormInputItem

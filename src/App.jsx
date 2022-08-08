@@ -7,22 +7,63 @@ import { Brightness7, NightsStay } from "@material-ui/icons"
 import { Form } from "react-bootstrap"
 
 function App() {
-  const [darkmode, setDarkmode] = useState(false)
+  const setLS = (key, value) => {
+    localStorage.setItem(key, value)
+  }
+
+  const getLS = (key) => {
+    return localStorage.getItem(key) === 'true' || false
+  }
+
+  const [darkmode, setDarkmode] = useState(getLS('darkmode'))
+  const [labels, setLabels] = useState(getLS('labels'))
+  const [typingX, setTypingX] = useState(getLS('typingX'))
 
   return (
     <div className="App">
-      <div className="btn-darkmode">
-        <Brightness7 />
-        <Form.Check
-          type="switch"
-          id="darkmode-switch"
-          name="darkmode"
-          checked={darkmode}
-          onChange={() => {
-            setDarkmode(!darkmode)
-          }}
-        />
-        <NightsStay />
+      <div className='d-flex flex-column'>
+        <div className="group-btn-options">
+          <div className="d-flex">
+            {/* <Brightness7 /> */}
+            <Form.Check
+              type="switch"
+              id="darkmode-switch"
+              name="darkmode"
+              checked={darkmode}
+              onChange={() => {
+                setLS('darkmode', !darkmode)
+                setDarkmode(!darkmode)
+              }}
+            />
+            {darkmode && <Brightness7 className='label-dark' /> || <NightsStay />}
+          </div>
+          <div className="d-flex">
+            <Form.Check
+              type="switch"
+              id="labels-switch"
+              name="labels"
+              checked={labels}
+              onChange={() => {
+                setLS('labels', !labels)
+                setLabels(!labels)
+              }}
+            />
+            <label className={darkmode ? 'label-dark' : 'label'}>Labels</label>
+          </div>
+          <div className="d-flex">
+            <Form.Check
+              type="switch"
+              id="typingX-switch"
+              name="typingX"
+              checked={typingX}
+              onChange={() => {
+                setLS('typingX', !typingX)
+                setTypingX(!typingX)
+              }}
+            />
+            <label className={darkmode ? 'label-dark' : 'label'}>{typingX ? '() mark' : 'X mark'}</label>
+          </div>
+        </div>
       </div>
       <header
         className={
@@ -30,7 +71,11 @@ function App() {
         }
       >
         <img src={logo} className="App-logo" alt="logo" />
-        <List darkmode={darkmode}></List>
+        <List
+          darkmode={darkmode}
+          labels={labels}
+          typingX={typingX}
+        ></List>
         <ToastContainer
           theme="colored"
           limit={3}

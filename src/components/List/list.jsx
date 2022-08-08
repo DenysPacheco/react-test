@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import JsonList from "../Objects/list.json"
 import MarketList from "../MarketList/marketList"
 import "./list.css"
+import "../../Styles/global.css"
 
 const copy = (obj) => JSON.parse(JSON.stringify(obj))
 const defaultList = copy(JsonList.items)
 let hist = []
-const MAXITEMS = 10
+const MAXITEMS = 100
+const MINITEMS = 0
 
 const List = (props) => {
   const [fruitsList, setFruitsList] = useState(defaultList)
@@ -28,6 +30,26 @@ const List = (props) => {
       setFruitsList(newList)
 
       return [true, "Added +1"]
+    }
+  }
+
+  const minus = (index) => {
+    let item = fruitsList.find((obj) => obj.id === index)
+    if (item.count <= MINITEMS) return [false, "Minimum limit reached!"]
+    else {
+      let newList = copy(fruitsList).map((obj) => {
+        if (obj.id === index) {
+          return {
+            ...obj,
+            count: obj.count === undefined ? undefined : --obj.count,
+          }
+        }
+        return obj
+      })
+
+      setFruitsList(newList)
+
+      return [true, "Removed -1"]
     }
   }
 
@@ -111,12 +133,16 @@ const List = (props) => {
       <MarketList
         fruitsList={fruitsList}
         add={add}
+        minus={minus}
         remove={remove}
         reset={reset}
         addList={addList}
         removeList={removeList}
         MAXITEMS={MAXITEMS}
+        MINITEMS={MINITEMS}
         darkmode={props.darkmode}
+        labels={props.labels}
+        typingX={props.typingX}
       />
     </div>
   )
