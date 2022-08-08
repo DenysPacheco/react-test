@@ -75,7 +75,7 @@ const ListContent = (props) => {
                   : toast.warning(message)
               }}
             >
-              {props.labels && 'Add'}
+              {props.labels && 'Plus'}
               <Add />
             </Button>
           </div>

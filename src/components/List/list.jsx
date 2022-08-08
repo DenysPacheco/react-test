@@ -35,7 +35,7 @@ const List = (props) => {
 
   const minus = (index) => {
     let item = fruitsList.find((obj) => obj.id === index)
-    if (item.count || item.count <= MINITEMS) return [false, "Minimum limit reached!"]
+    if (!item.count || item.count <= MINITEMS) return [false, "Minimum limit reached!"]
     else {
       let newList = copy(fruitsList).map((obj) => {
         if (obj.id === index) {
