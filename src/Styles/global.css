@@ -4,6 +4,10 @@
   margin: 0.3rem;
 }
 
+.btn-option {
+  flex-flow: row-reverse
+}
+
 .group-btn-options {
   position: absolute;
   right: 0;
@@ -54,5 +58,29 @@
 
 /* OVERRIDE */
 .MuiSvgIcon-root {
-  vertical-align: bottom;
+  vertical-align: middle;
 }
+
+@media only screen and (max-width: 480px) {
+
+  label,
+  div,
+  input,
+  .btn {
+    font-size: 14px;
+  }
+
+  .btn {
+    margin: 0px 5px;
+    padding: 3px 5px;
+  }
+
+  .list-container,
+  .list-group {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {}
+
+@media only screen and (max-width: 720px) {}

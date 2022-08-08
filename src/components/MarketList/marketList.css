@@ -46,10 +46,41 @@
 }
 
 .list-item-btn-group {
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 }
 
 .list-item-btn {
   margin-left: 0.5rem;
   /* padding: 0.4rem; */
+}
+
+.marketlist-btn-group {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 480px) {
+
+  .list-item-value,
+  .list-item-count {
+    font-size: 20px;
+    max-width: 8rem;
+  }
+
+  .list-item-btn-group {
+    /* margin-left: 1rem; */
+    /* display: flex;
+    flex-flow: column-reverse; */
+    gap: 7px;
+  }
+
+  .marketlist-btn-group {
+    gap: 1rem;
+  }
+
+  .marketlist-btn {
+    height: 2rem;
+    min-width: 5rem;
+  }
 }

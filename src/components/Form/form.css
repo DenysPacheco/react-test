@@ -22,3 +22,15 @@
   align-items: center;
   margin-top: 2rem;
 }
+
+@media only screen and (max-width: 480px) {
+  .input-search {
+    width: 8rem;
+    height: 1.5rem;
+    font-size: 14px;
+  }
+
+  .btn-option {
+    flex-direction: row-reverse;
+  }
+}

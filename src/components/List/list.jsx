@@ -13,7 +13,7 @@ const MINITEMS = 0
 const List = (props) => {
   const [fruitsList, setFruitsList] = useState(defaultList)
 
-  const add = (index) => {
+  const plus = (index) => {
     let item = fruitsList.find((obj) => obj.id === index)
     if (item.count >= MAXITEMS) return [false, "Maximum limit reached!"]
     else {
@@ -35,7 +35,7 @@ const List = (props) => {
 
   const minus = (index) => {
     let item = fruitsList.find((obj) => obj.id === index)
-    if (item.count <= MINITEMS) return [false, "Minimum limit reached!"]
+    if (item.count || item.count <= MINITEMS) return [false, "Minimum limit reached!"]
     else {
       let newList = copy(fruitsList).map((obj) => {
         if (obj.id === index) {
@@ -50,36 +50,6 @@ const List = (props) => {
       setFruitsList(newList)
 
       return [true, "Removed -1"]
-    }
-  }
-
-  const remove = (index) => {
-    let newList = copy(fruitsList)
-    newList = newList.filter((obj) => obj.id !== index)
-    setFruitsList(newList)
-  }
-
-  const reset = () => {
-    let count = fruitsList.reduce(
-      (acc, item) => acc + (item?.count || 0),
-      0,
-    )
-
-    if (fruitsList.length && !count) {
-      return [false, "List already zeroed!"]
-    } else if (!fruitsList.length) {
-      if (hist.length) {
-        setFruitsList(hist)
-        return [true, "List restored!"]
-      }
-      return [false, "Can't reset empty list!"]
-    } else {
-      let newList = copy(fruitsList).map((obj) => ({
-        ...obj,
-        count: 0,
-      }))
-      setFruitsList(newList)
-      return [true, "List reseted!"]
     }
   }
 
@@ -117,6 +87,36 @@ const List = (props) => {
     }
   }
 
+  const remove = (index) => {
+    let newList = copy(fruitsList)
+    newList = newList.filter((obj) => obj.id !== index)
+    setFruitsList(newList)
+  }
+
+  const reset = () => {
+    let count = fruitsList.reduce(
+      (acc, item) => acc + (item?.count || 0),
+      0,
+    )
+
+    if (fruitsList.length && !count) {
+      return [false, "List already zeroed!"]
+    } else if (!fruitsList.length) {
+      if (hist.length) {
+        setFruitsList(hist)
+        return [true, "List restored!"]
+      }
+      return [false, "Can't reset empty list!"]
+    } else {
+      let newList = copy(fruitsList).map((obj) => ({
+        ...obj,
+        count: 0,
+      }))
+      setFruitsList(newList)
+      return [true, "List reseted!"]
+    }
+  }
+
   const removeList = () => {
     if (fruitsList.length) {
       hist = copy(fruitsList)
@@ -132,7 +132,7 @@ const List = (props) => {
       <h1 className="list-title">{JsonList.name}</h1>
       <MarketList
         fruitsList={fruitsList}
-        add={add}
+        plus={plus}
         minus={minus}
         remove={remove}
         reset={reset}

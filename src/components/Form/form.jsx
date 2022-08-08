@@ -26,10 +26,9 @@ const FormInputItem = (props) => {
         type="text"
         name="newItem"
         value={query}
-        className={`input-search ${props.darkmode ? "input-search-dark" : ""
-          }
-                  `}
+        className={`input-search ${props.darkmode && "input-search-dark"}`}
         placeholder="Insert new item"
+        maxLength={25}
         onChange={(event) => {
           setQuery(event.target.value)
         }}
@@ -37,12 +36,12 @@ const FormInputItem = (props) => {
       <Button
         type="submit"
         className={`list-item-btn input-add-list mx-2
-                    ${props.darkmode ? 'list-item-btn-dark list-item-btn-success-dark' : ''}
+                    ${props.darkmode && 'list-item-btn-dark list-item-btn-success-dark'}
                     ${query ? '' : (props.darkmode ? 'disabled disabled-dark' : 'disabled')}
                   `}
         variant="success"
       >
-        {!props.labels ? 'Add to list ' : ''}
+        {!props.labels && 'Add to list '}
         <Add />
       </Button>
     </Form>

@@ -5,6 +5,7 @@ import List from "./components/List/list"
 import { ToastContainer } from "react-toastify"
 import { Brightness7, NightsStay } from "@material-ui/icons"
 import { Form } from "react-bootstrap"
+import useWindowDimensions from './Utils/utils'
 
 function App() {
   const setLS = (key, value) => {
@@ -12,18 +13,22 @@ function App() {
   }
 
   const getLS = (key) => {
-    return localStorage.getItem(key) === 'true' || false
+    const value = localStorage.getItem(key)
+    if (value === null) return value
+    else return value === 'true'
   }
 
+  const { width } = useWindowDimensions()
+
   const [darkmode, setDarkmode] = useState(getLS('darkmode'))
-  const [labels, setLabels] = useState(getLS('labels'))
+  const [labels, setLabels] = useState(!((width <= 480) || getLS('labels')))
   const [typingX, setTypingX] = useState(getLS('typingX'))
 
   return (
     <div className="App">
       <div className='d-flex flex-column'>
         <div className="group-btn-options">
-          <div className="d-flex">
+          <div className="d-flex btn-option">
             {/* <Brightness7 /> */}
             <Form.Check
               type="switch"
@@ -37,7 +42,7 @@ function App() {
             />
             {darkmode && <Brightness7 className='label-dark' /> || <NightsStay />}
           </div>
-          <div className="d-flex">
+          <div className="d-flex btn-option">
             <Form.Check
               type="switch"
               id="labels-switch"
@@ -48,9 +53,9 @@ function App() {
                 setLabels(!labels)
               }}
             />
-            <label className={darkmode ? 'label-dark' : 'label'}>Labels</label>
+            <label className={darkmode ? 'label-dark' : 'label'}>{labels ? 'No labels' : 'Labels'}</label>
           </div>
-          <div className="d-flex">
+          <div className="d-flex btn-option">
             <Form.Check
               type="switch"
               id="typingX-switch"

@@ -46,27 +46,18 @@ const MarketList = (props) => {
           MINITEMS={props.MINITEMS}
           searchItem={searchItem}
           remove={props.remove}
-          add={props.add}
+          plus={props.plus}
           minus={props.minus}
           labels={props.labels}
           typingX={props.typingX}
         />
       </ListGroup>
-      {!query ? (
-        <>
+      {!query && (
+        <div className='marketlist-btn-group'>
           <Button
-            className={`btn
-                            ${props.darkmode
-                ? "list-item-btn-dark list-item-btn-danger-dark"
-                : ""
-              }
-                            ${props.fruitsList.length
-                ? ""
-                : props.darkmode
-                  ? "disabled disabled-dark"
-                  : "disabled"
-              }
-                            `}
+            className={`marketlist-btn ${props.darkmode ? "list-item-btn-dark list-item-btn-danger-dark" : ""}
+                ${props.fruitsList.length ? "" :
+                (props.darkmode ? "disabled disabled-dark" : "disabled")}`}
             variant="danger"
             onClick={() => {
               let [confirmation, message] = props.removeList()
@@ -75,24 +66,13 @@ const MarketList = (props) => {
                 : toast.warning(message)
             }}
           >
-            {!props.labels ? 'Delete all ' : ''}
+            {props.labels && 'Delete all '}
             <Delete />
           </Button>
           <Button
-            className={`btn
-                            ${props.darkmode
-                ? "list-item-btn-dark list-item-btn-primary-dark"
-                : ""
-              }
-
-                            ${totalItems() ||
-                !props.fruitsList.length
-                ? ""
-                : props.darkmode
-                  ? "disabled disabled-dark"
-                  : "disabled"
-              }
-                            `}
+            className={`marketlist-btn ${props.darkmode && "list-item-btn-dark list-item-btn-primary-dark"}
+                ${totalItems() || !props.fruitsList.length ? "" :
+                (props.darkmode ? "disabled disabled-dark" : "disabled")}`}
             variant="primary"
             onClick={() => {
               props.reset()
@@ -102,16 +82,13 @@ const MarketList = (props) => {
               //   : toast.warning(message)
             }}
           >
-            {!props.labels ? 'Reset ' : ''}
-            {totalItems()
-              ? "(" + totalItems() + ")"
-              : ""}
+            {props.labels && 'Reset '}
+            {totalItems() ? "(" + totalItems() + ") " : ''}
             <Loop />
           </Button>
-        </>
-      ) : (
-        false
-      )}
+        </div>
+      )
+      }
     </div>
   )
 }
