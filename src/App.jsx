@@ -85,7 +85,7 @@ function App() {
         <ToastContainer
           theme={darkmode ? 'dark' : 'colored'}
           limit={3}
-          position={lowWidth ? "bottom-left" : 'bottom-center'}
+          position={lowWidth ? 'bottom-center' : 'bottom-left'}
           autoClose={5000}
           hideProgressBar
           newestOnTop
