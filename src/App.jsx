@@ -19,9 +19,10 @@ function App() {
   }
 
   const { width } = useWindowDimensions()
+  const lowWidth = width <= 480
 
   const [darkmode, setDarkmode] = useState(getLS('darkmode'))
-  const [labels, setLabels] = useState(!((width <= 480) || getLS('labels')))
+  const [labels, setLabels] = useState(!(lowWidth || getLS('labels')))
   const [typingX, setTypingX] = useState(getLS('typingX'))
 
   return (
@@ -72,7 +73,7 @@ function App() {
       </div>
       <header
         className={
-          darkmode ? "App-header App-header-dark" : "App-header"
+          darkmode ? "App-header background-dark" : "App-header"
         }
       >
         <img src={logo} className="App-logo" alt="logo" />
@@ -82,9 +83,9 @@ function App() {
           typingX={typingX}
         ></List>
         <ToastContainer
-          theme="colored"
+          theme={darkmode ? 'dark' : 'colored'}
           limit={3}
-          position="bottom-left"
+          position={lowWidth ? "bottom-left" : 'bottom-center'}
           autoClose={5000}
           hideProgressBar
           newestOnTop

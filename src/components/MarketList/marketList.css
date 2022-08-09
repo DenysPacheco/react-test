@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap");
 
 .list-group-table {
-  width: max-content;
   margin-top: 1rem;
-  max-width: 36rem;
+  width: max-content;
+  max-width: 46rem;
+  min-width: 35rem;
 }
 
 .list-item {
@@ -15,7 +16,7 @@
 }
 
 .list-item-dark {
-  background: #16181c;
+  /* background: #16181c; */
   color: #c8c8c8;
   transition: all 0.3s ease-in-out;
 
@@ -60,6 +61,11 @@
   justify-content: center;
 }
 
+.marketlist-btn {
+  min-height: 2rem;
+  min-width: 5rem;
+}
+
 @media only screen and (max-width: 480px) {
 
   .list-item-value,
@@ -75,12 +81,17 @@
     gap: 7px;
   }
 
+  .list-group-table {
+    min-width: 100%;
+  }
+
   .marketlist-btn-group {
     gap: 1rem;
   }
+}
 
-  .marketlist-btn {
-    height: 2rem;
-    min-width: 5rem;
+@media only screen and (max-width: 720px) {
+  .list-group-table {
+    min-width: 100%;
   }
 }

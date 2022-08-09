@@ -87,8 +87,7 @@ const MarketList = (props) => {
             <Loop />
           </Button>
         </div>
-      )
-      }
+      )}
     </div>
   )
 }

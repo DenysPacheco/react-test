@@ -16,7 +16,7 @@ const ListContent = (props) => {
       .map((item, index) => (
         <ListGroup.Item
           key={index}
-          className={`list-item ${props.darkmode && "list-item-dark"
+          className={`list-item ${props.darkmode && "list-item-dark list-background-dark"
             } ${props.labels && width <= 360 && 'flex-column'}`}
         >
           <div className="d-flex list-item-info" title={item.value}>

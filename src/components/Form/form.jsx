@@ -41,7 +41,7 @@ const FormInputItem = (props) => {
                   `}
         variant="success"
       >
-        {!props.labels && 'Add to list '}
+        {props.labels && 'Add to list '}
         <Add />
       </Button>
     </Form>

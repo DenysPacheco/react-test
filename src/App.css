@@ -30,7 +30,6 @@
 }
 
 .App-header-dark {
-  background-color: #000000;
   color: white;
   transition: all 0.3s ease-in-out;
 }
@@ -65,7 +64,7 @@
   border-radius: 2rem !important;
 }
 
-.Toastify__toast>button>svg {
+.Toastify__close-button>svg {
   display: none;
 }
 

@@ -1,7 +1,75 @@
-.btn {
-  border-radius: 2rem !important;
+:root {
+  /* Themes */
+  /* dark */
+  --bg-dark: #16181c;
+  --bg-list-dark: #1f2431;
+  --label-dark: #c8c8c8;
+  /* light */
+  --bg-light: #707c92;
+  --bg-list-light: #a6adb9;
+  --label-light: #212529;
+
+  /* Colours */
+  --primary: #0d6efd;
+  --danger: #bb2d3b;
+  --secondary: #6c757d;
+  --success: #157347;
+
+}
+
+[class*=dark] {
   transition: all 0.3s ease-in-out;
-  margin: 0.3rem;
+}
+
+.list-item-btn-danger-dark {
+  color: var(--danger);
+}
+
+.list-item-btn-primary-dark {
+  color: var(--primary);
+}
+
+.list-item-btn-secondary-dark {
+  color: var(--secondary);
+}
+
+.list-item-btn-success-dark {
+  color: var(--success);
+}
+
+.label-dark {
+  color: var(--label-dark);
+}
+
+.background-dark {
+  background-color: var(--bg-dark);
+}
+
+.list-background-dark {
+  background-color: var(--bg-list-dark);
+}
+
+.disabled-dark {
+  color: grey !important;
+  border-color: grey !important;
+  opacity: 0.4 !important;
+  /* color: #0d6efd !important; */
+  /* background-color: transparent !important; */
+  /* border-color: #0d6efd !important; */
+}
+
+.list-group {
+  border-radius: 1rem;
+}
+
+.list-item-btn-dark {
+  background: transparent !important;
+}
+
+.btn {
+  border-radius: 2rem;
+  margin: 0px 5px;
+  padding: 3px 8px;
 }
 
 .btn-option {
@@ -19,43 +87,6 @@
   /* padding: 0.4rem; */
 }
 
-.list-item-btn-dark {
-  background: transparent !important;
-}
-
-.list-item-btn-danger-dark {
-  color: #bb2d3b;
-}
-
-.list-item-btn-primary-dark {
-  color: #0d6efd;
-}
-
-.list-item-btn-secondary-dark {
-  color: #6c757d;
-}
-
-.list-item-btn-success-dark {
-  color: #157347;
-}
-
-.disabled-dark {
-  color: grey !important;
-  border-color: grey !important;
-  opacity: 0.4 !important;
-  /* color: #0d6efd !important; */
-  /* background-color: transparent !important; */
-  /* border-color: #0d6efd !important; */
-}
-
-.label-dark {
-  color: #c8c8c8;
-}
-
-.list-group {
-  border-radius: 1rem !important;
-}
-
 /* OVERRIDE */
 .MuiSvgIcon-root {
   vertical-align: middle;
@@ -68,11 +99,6 @@
   input,
   .btn {
     font-size: 14px;
-  }
-
-  .btn {
-    margin: 0px 5px;
-    padding: 3px 5px;
   }
 
   .list-container,
