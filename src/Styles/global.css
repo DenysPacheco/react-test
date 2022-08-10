@@ -14,6 +14,8 @@
   --danger: #bb2d3b;
   --secondary: #6c757d;
   --success: #157347;
+
+  --secondary-dark: #9f9d9d;
 }
 
 [class*="dark"] {
@@ -24,6 +26,7 @@
   border-radius: 2rem;
   margin: 0px 5px;
   padding: 3px 8px;
+  font-size: 20px;
 }
 
 .btn-dark {
@@ -46,8 +49,13 @@
 }
 
 .btn-secondary-dark {
-  color: var(--secondary);
-  border-color: var(--secondary);
+  color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+.btn-secondary-disabled {
+  border-color: grey !important;
+  opacity: 0.4 !important;
 }
 
 .btn-success-dark {
