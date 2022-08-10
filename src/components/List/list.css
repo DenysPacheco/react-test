@@ -1,3 +1,8 @@
 .list-title {
-    font-family: "Merriweather Sans", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+.list-item-btn {
+  margin-left: 0.5rem;
+  /* padding: 0.4rem; */
 }

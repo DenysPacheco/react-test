@@ -10,22 +10,16 @@ import ListContent from "./listContent"
 import FormInputItem from "../Form/form"
 
 const MarketList = (props) => {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("")
 
   const totalItems = () => {
-    return props.fruitsList.reduce(
-      (acc, item) => acc + (item?.count || 0),
-      0,
-    )
+    return props.fruitsList.reduce((acc, item) => acc + (item?.count || 0), 0)
   }
 
   const searchItem = (item) => {
-    if (query === "" || query === undefined)
-      return true
+    if (query === "" || query === undefined) return true
     else {
-      return item.value
-        .toLowerCase()
-        .includes(query.toLowerCase())
+      return item.value.toLowerCase().includes(query.toLowerCase())
     }
   }
 
@@ -53,39 +47,59 @@ const MarketList = (props) => {
         />
       </ListGroup>
       {!query && (
-        <div className='marketlist-btn-group'>
-          <Button
-            className={`marketlist-btn ${props.darkmode ? "list-item-btn-dark list-item-btn-danger-dark" : ""}
-                ${props.fruitsList.length ? "" :
-                (props.darkmode ? "disabled disabled-dark" : "disabled")}`}
-            variant="danger"
-            onClick={() => {
-              let [confirmation, message] = props.removeList()
-              confirmation
-                ? toast.error(message)
-                : toast.warning(message)
-            }}
+        <div className="marketlist-btn-group">
+          <div className={`${!props.fruitsList.length && "disabled"}`}>
+            <Button
+              className={`marketlist-btn ${
+                props.darkmode ? "btn-dark btn-danger-dark" : ""
+              }
+                ${
+                  props.fruitsList.length
+                    ? ""
+                    : props.darkmode
+                    ? "disabled disabled-dark"
+                    : "disabled"
+                }`}
+              variant="danger"
+              onClick={() => {
+                let [confirmation, message] = props.removeList()
+                confirmation ? toast.error(message) : toast.warning(message)
+              }}
+            >
+              {props.labels && "Delete all "}
+              <Delete />
+            </Button>
+          </div>
+          <div
+            className={`${
+              !(totalItems() || !props.fruitsList.length) && "disabled"
+            }`}
           >
-            {props.labels && 'Delete all '}
-            <Delete />
-          </Button>
-          <Button
-            className={`marketlist-btn ${props.darkmode && "list-item-btn-dark list-item-btn-primary-dark"}
-                ${totalItems() || !props.fruitsList.length ? "" :
-                (props.darkmode ? "disabled disabled-dark" : "disabled")}`}
-            variant="primary"
-            onClick={() => {
-              props.reset()
-              // let [confirmation, message] = props.reset()
-              // confirmation
-              //   ? toast.success(message)
-              //   : toast.warning(message)
-            }}
-          >
-            {props.labels && 'Reset '}
-            {totalItems() ? "(" + totalItems() + ") " : ''}
-            <Loop />
-          </Button>
+            <Button
+              className={`marketlist-btn text ${
+                props.darkmode && "btn-dark btn-primary-dark"
+              }
+                  ${
+                    totalItems() || !props.fruitsList.length
+                      ? ""
+                      : props.darkmode
+                      ? "disabled disabled-dark"
+                      : "disabled"
+                  }`}
+              variant="primary"
+              onClick={() => {
+                props.reset()
+                // let [confirmation, message] = props.reset()
+                // confirmation
+                //   ? toast.success(message)
+                //   : toast.warning(message)
+              }}
+            >
+              {props.labels && "Reset "}
+              {totalItems() ? "(" + totalItems() + ") " : ""}
+              <Loop />
+            </Button>
+          </div>
         </div>
       )}
     </div>

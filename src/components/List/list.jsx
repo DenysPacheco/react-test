@@ -35,7 +35,8 @@ const List = (props) => {
 
   const minus = (index) => {
     let item = fruitsList.find((obj) => obj.id === index)
-    if (!item.count || item.count <= MINITEMS) return [false, "Minimum limit reached!"]
+    if (!item.count || item.count <= MINITEMS)
+      return [false, "Minimum limit reached!"]
     else {
       let newList = copy(fruitsList).map((obj) => {
         if (obj.id === index) {
@@ -66,7 +67,7 @@ const List = (props) => {
       const max = Math.max(
         ...arr.map((obj) => {
           return obj.id
-        }),
+        })
       )
       return isFinite(max) ? max : 0
     }
@@ -76,10 +77,13 @@ const List = (props) => {
         return obj.value === item
       })
     ) {
-      setFruitsList(fruitsList => [...fruitsList, {
-        id: getMax("id", fruitsList) + 1,
-        value: item,
-      }])
+      setFruitsList((fruitsList) => [
+        ...fruitsList,
+        {
+          id: getMax("id", fruitsList) + 1,
+          value: item,
+        },
+      ])
 
       return [true, "Item added!"]
     } else {
@@ -94,10 +98,7 @@ const List = (props) => {
   }
 
   const reset = () => {
-    let count = fruitsList.reduce(
-      (acc, item) => acc + (item?.count || 0),
-      0,
-    )
+    let count = fruitsList.reduce((acc, item) => acc + (item?.count || 0), 0)
 
     if (fruitsList.length && !count) {
       return [false, "List already zeroed!"]
@@ -128,7 +129,7 @@ const List = (props) => {
   }
 
   return (
-    <div className='list-container'>
+    <div className="list-container">
       <h1 className="list-title">{JsonList.name}</h1>
       <MarketList
         fruitsList={fruitsList}

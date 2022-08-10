@@ -10,7 +10,6 @@
   pointer-events: none;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -27,6 +26,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
   transition: all 0.3s ease-in-out;
+  padding-top: 2.5rem;
 }
 
 .App-header-dark {
@@ -64,7 +64,7 @@
   border-radius: 2rem !important;
 }
 
-.Toastify__close-button>svg {
+.Toastify__close-button > svg {
   display: none;
 }
 
@@ -82,6 +82,7 @@
     padding-top: 25px;
     font-weight: 400;
     margin-left: 25px !important;
+    word-break: break-word;
   }
 
   .Toastify__toast {

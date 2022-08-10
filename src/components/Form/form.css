@@ -7,7 +7,7 @@
   max-width: 12rem;
   padding: 0 0.7rem;
   font-size: 18px;
-  width: 10rem;
+  width: 12rem;
   transition: all 0.3s ease-in-out;
 }
 
@@ -26,9 +26,9 @@
 
 @media only screen and (max-width: 480px) {
   .input-search {
-    width: 8rem;
-    height: 1.5rem;
-    font-size: 14px;
+    font-size: 18px;
+    height: 2rem;
+    width: 10rem;
   }
 
   .btn-option {

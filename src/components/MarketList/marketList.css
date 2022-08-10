@@ -19,11 +19,11 @@
   /* background: #16181c; */
   color: #c8c8c8;
   transition: all 0.3s ease-in-out;
-
 }
 
 .list-item-info {
   white-space: break-spaces;
+  margin-right: 1rem;
 }
 
 .list-item-id {
@@ -36,10 +36,12 @@
 
 .list-item-value {
   font-size: 25px;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 20rem;
+  max-width: 18rem;
+  overflow-wrap: break-word;
+  text-align: start;
 }
 
 .list-item-count {
@@ -48,11 +50,6 @@
 
 .list-item-btn-group {
   /* margin-left: 1rem; */
-}
-
-.list-item-btn {
-  margin-left: 0.5rem;
-  /* padding: 0.4rem; */
 }
 
 .marketlist-btn-group {
@@ -67,11 +64,21 @@
 }
 
 @media only screen and (max-width: 480px) {
-
   .list-item-value,
   .list-item-count {
-    font-size: 20px;
-    max-width: 8rem;
+    font-size: 22px;
+  }
+
+  .w-80 {
+    width: 80% !important;
+  }
+
+  .list-item-width {
+    max-width: 7rem;
+  }
+
+  .list-item-info-width {
+    max-width: 11.5rem;
   }
 
   .list-item-btn-group {
@@ -79,6 +86,7 @@
     /* display: flex;
     flex-flow: column-reverse; */
     gap: 7px;
+    margin-top: 0.5rem;
   }
 
   .list-group-table {
@@ -87,6 +95,11 @@
 
   .marketlist-btn-group {
     gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .list-item-info {
+    margin-right: 0px !important;
   }
 }
 

@@ -14,27 +14,55 @@
   --danger: #bb2d3b;
   --secondary: #6c757d;
   --success: #157347;
-
 }
 
-[class*=dark] {
+[class*="dark"] {
   transition: all 0.3s ease-in-out;
 }
 
-.list-item-btn-danger-dark {
+.btn {
+  border-radius: 2rem;
+  margin: 0px 5px;
+  padding: 3px 8px;
+}
+
+.btn-dark {
+  background: transparent !important;
+}
+
+.btn-dark:hover {
+  border-color: white;
+  color: white;
+}
+
+.btn-danger-dark {
   color: var(--danger);
+  border-color: var(--danger);
 }
 
-.list-item-btn-primary-dark {
+.btn-primary-dark {
   color: var(--primary);
+  border-color: var(--primary);
 }
 
-.list-item-btn-secondary-dark {
+.btn-secondary-dark {
   color: var(--secondary);
+  border-color: var(--secondary);
 }
 
-.list-item-btn-success-dark {
+.btn-success-dark {
   color: var(--success);
+  border-color: var(--success);
+}
+
+.btn-option {
+  flex-flow: row-reverse;
+}
+
+.group-btn-options {
+  position: absolute;
+  right: 0;
+  margin: 1rem;
 }
 
 .label-dark {
@@ -47,6 +75,10 @@
 
 .list-background-dark {
   background-color: var(--bg-list-dark);
+}
+
+.disabled {
+  cursor: not-allowed !important;
 }
 
 .disabled-dark {
@@ -62,29 +94,8 @@
   border-radius: 1rem;
 }
 
-.list-item-btn-dark {
-  background: transparent !important;
-}
-
-.btn {
-  border-radius: 2rem;
-  margin: 0px 5px;
-  padding: 3px 8px;
-}
-
-.btn-option {
-  flex-flow: row-reverse
-}
-
-.group-btn-options {
-  position: absolute;
-  right: 0;
-  margin: 1rem;
-}
-
-.list-item-btn {
-  margin-left: 0.5rem;
-  /* padding: 0.4rem; */
+.text {
+  font-size: 20px;
 }
 
 /* OVERRIDE */
@@ -93,20 +104,23 @@
 }
 
 @media only screen and (max-width: 480px) {
-
-  label,
-  div,
-  input,
-  .btn {
-    font-size: 14px;
+  .MuiSvgIcon-root {
+    font-size: 2rem !important;
   }
 
   .list-container,
   .list-group {
     width: 100%;
   }
+
+  .group-btn-options {
+    font-size: 20px;
+    margin: 0.5rem;
+  }
 }
 
-@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 480px) {
+}
 
-@media only screen and (max-width: 720px) {}
+@media only screen and (max-width: 720px) {
+}

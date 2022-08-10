@@ -1,9 +1,9 @@
 # React test
 
-## Mini test repo for react practice.
+## Mini test repo for react practice
 
 Honestly, 'it feels gooood' 🤩.
-View: [gh-pages](https://denyspacheco.github.io/react-test/)
+See example: [gh-pages](https://denyspacheco.github.io/react-test/)
 
 ![Bruce meme](https://i.pinimg.com/originals/b1/ed/80/b1ed80033a3060a68fbdc5573b6f6df2.jpg)
 
@@ -15,9 +15,10 @@ React is nice because it centralizes the interface of data access (i.e.: `State`
 
 #### Cons
 
-- Hard to start (like anything)
-- Data flow can be confusing (but I'm a starter, so...)
-- Maintaining means lots of change in the flow for once minimal view change (depending how you structure)
+- ~~Hard to start (like anything)~~
+- Data flow can be confusing ~~(but I'm a starter, so...)~~ if not well structured or studied
+- More complexity for views
+- Maintaining means lots of change in the flow for one minimal view change (depending how you structure)
 
 #### Pros
 
@@ -25,6 +26,10 @@ React is nice because it centralizes the interface of data access (i.e.: `State`
 - Simple to code or easy to create (since it's js and everything is connected)
 - Like said above, auto coupling of functionalities since linked on a state
 - ✨ No reload of pages for content 😍
+- Control of variables, programming and login in HTML since it's jsx ✨
+- Dynamic arrange of data
+
+---
 
 ### Side notes
 
@@ -47,3 +52,9 @@ React is nice because it centralizes the interface of data access (i.e.: `State`
 - `toast("Wow so easy!")`
 
 > [Test it out](https://fkhadra.github.io/react-toastify/introduction/)
+
+### [Bootstrap](https://react-bootstrap.github.io/)
+
+And a minimum of react-bootstrap
+
+`npm install react-bootstrap bootstrap`
