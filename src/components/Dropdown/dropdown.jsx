@@ -1,6 +1,10 @@
+// @ts-ignore
 import Dropdown from "react-bootstrap/Dropdown"
+// @ts-ignore
 import SettingsIcon from "@material-ui/icons/Settings"
+// @ts-ignore
 import { Brightness7, NightsStay } from "@material-ui/icons"
+// @ts-ignore
 import { Form } from "react-bootstrap"
 import "./dropdown.css"
 import "../../Styles/global.css"

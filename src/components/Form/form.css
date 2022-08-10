@@ -1,20 +1,21 @@
+@import "../../Styles/global.css";
+
 .input-add-list {
   margin: 0.5rem;
 }
 
 .input-search {
-  border-radius: 1rem;
+  border-radius: var(--border-radius-min);
   max-width: 12rem;
   padding: 0 0.7rem;
-  font-size: 18px;
+  font-size: var(--font-size);
   width: 12rem;
-  transition: all 0.3s ease-in-out;
 }
 
 .input-search-dark {
   background: #202327;
-  color: #c8c8c8;
-  border-color: #61dafb;
+  color: var(--label-dark);
+  border-color: var(--react);
 }
 
 .add-list-group {
@@ -26,9 +27,9 @@
 
 @media only screen and (max-width: 480px) {
   .input-search {
-    font-size: 18px;
+    font-size: var(--font-size);
     height: 2rem;
-    width: 10rem;
+    width: 11rem;
   }
 
   .btn-option {

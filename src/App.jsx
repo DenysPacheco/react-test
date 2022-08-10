@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import logo from "./logo.svg"
 import "./App.css"
 import List from "./components/List/list"
+// @ts-ignore
 import { ToastContainer } from "react-toastify"
 import useWindowDimensions from "./Utils/utils"
 import { LOWWIDTH } from "./Configs/config"

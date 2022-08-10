@@ -1,6 +1,9 @@
 import React from "react"
+// @ts-ignore
 import { ListGroup, Button } from "react-bootstrap"
+// @ts-ignore
 import { Delete, Add, Remove } from "@material-ui/icons"
+// @ts-ignore
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
 import "bootstrap/dist/css/bootstrap.min.css"

@@ -1,7 +1,10 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+// @ts-ignore
 import { Button, Form } from "react-bootstrap"
+// @ts-ignore
 import { Add } from "@material-ui/icons"
+// @ts-ignore
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
 import "./form.css"

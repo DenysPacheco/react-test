@@ -13,3 +13,49 @@ dark:
 --success: #157347
 --danger: #bb2d3b
 --react: #61dafb */
+
+:root {
+  /* Themes */
+  /* dark */
+  --bg-dark: #16181c;
+  --bg-list-dark: #1f2431;
+  --label-dark: #c8c8c8;
+  /* light */
+  --bg-light: #707c92;
+  --bg-list-light: #a6adb9;
+  --label-light: #212529;
+
+  /* Colours */
+  --primary: #0d6efd;
+  --danger: #bb2d3b;
+  --secondary: #6c757d;
+  --success: #157347;
+  --black: #212529;
+  --react: #61dafb;
+
+  --secondary-dark: #6c757d;
+  --secondary-darker: #5c636a;
+
+  /* Misc */
+  --id-font-size: 14px;
+  --id-font-size-mobile: 10px;
+
+  --item-list-font-size: 25px;
+  --item-list-font-size-mobile: 22px;
+
+  --item-list-count-font-size: 25px;
+  --item-list-count-font-size-mobile: 22px;
+
+  --font-size: 20px;
+  --font-size-mobile: 20px;
+
+  --btn-size: 2rem;
+  --btn-size-mobile: 2rem;
+
+  --border-radius-min: 1rem;
+  --border-radius-max: 2rem;
+}
+
+[class*="dark"] {
+  transition: all 0.3s ease-in-out;
+}

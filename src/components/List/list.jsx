@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+// @ts-ignore
 import JsonList from "../Objects/list.json"
 import MarketList from "../MarketList/marketList"
 import "./list.css"

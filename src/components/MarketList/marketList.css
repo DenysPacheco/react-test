@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap");
+@import "../../Styles/global.css";
 
 .list-group-table {
   margin-top: 1rem;
@@ -12,13 +13,11 @@
   justify-content: space-between;
   background: var(--bg-list-light);
   width: auto;
-  transition: all 0.3s ease-in-out;
 }
 
 .list-item-dark {
   /* background: #16181c; */
   color: var(--label-dark);
-  transition: all 0.3s ease-in-out;
 }
 
 .list-item-info {
@@ -27,7 +26,7 @@
 }
 
 .list-item-id {
-  font-size: 14px;
+  font-size: var(--id-font-size);
   color: gray;
   height: min-content;
   width: min-content;
@@ -35,7 +34,7 @@
 }
 
 .list-item-value {
-  font-size: 25px;
+  font-size: var(--item-list-font-size);
   /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
@@ -45,7 +44,7 @@
 }
 
 .list-item-count {
-  font-size: 25px;
+  font-size: var(--item-list-count-font-size);
 }
 
 .list-item-btn-group {
@@ -69,9 +68,12 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .list-item-value,
+  .list-item-value {
+    font-size: var(--item-list-font-size-mobile);
+  }
+
   .list-item-count {
-    font-size: 22px;
+    font-size: var(--item-list-count-font-size-mobile);
   }
 
   .w-80 {

@@ -3,7 +3,7 @@
 }
 
 .dropdown-toggle {
-  background-color: var(--secondary-dark);
+  background-color: var(--secondary-darker);
   border: none;
 }
 
@@ -17,11 +17,11 @@
 }
 
 .dropdown-item:hover {
-  background-color: var(--secondary-darker);
+  background-color: var(--secondary-dark);
 }
 
 .dropdown-item:focus {
-  background-color: var(--secondary-darker);
+  background-color: var(--secondary-dark);
 }
 
 .dropdown-item:active {
