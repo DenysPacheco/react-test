@@ -9,13 +9,21 @@
   --bg-list-light: #a6adb9;
   --label-light: #212529;
 
+  --black: #212529;
+
   /* Colours */
   --primary: #0d6efd;
   --danger: #bb2d3b;
   --secondary: #6c757d;
   --success: #157347;
 
-  --secondary-dark: #9f9d9d;
+  --secondary-dark: #5c636a;
+  --secondary-darker: #6c757d;
+
+  --font-size: 20px;
+  --font-size-mobile: 20px;
+  --btn-size: 2rem;
+  --btn-size-mobile: 2rem;
 }
 
 [class*="dark"] {
@@ -26,7 +34,11 @@
   border-radius: 2rem;
   margin: 0px 5px;
   padding: 3px 8px;
-  font-size: 20px;
+  font-size: var(--font-size);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
 }
 
 .btn-dark {
@@ -65,6 +77,8 @@
 
 .btn-option {
   flex-flow: row-reverse;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .group-btn-options {
@@ -103,7 +117,17 @@
 }
 
 .text {
-  font-size: 20px;
+  font-size: var(--font-size);
+}
+
+.form-check-input {
+  cursor: pointer !important;
+  width: 2.5rem !important;
+  height: 1.2rem !important;
+}
+
+.icon-option {
+  font-size: var(--font-size);
 }
 
 /* OVERRIDE */
@@ -112,8 +136,8 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .MuiSvgIcon-root {
-    font-size: 2rem !important;
+  .icon-option {
+    font-size: 2rem;
   }
 
   .list-container,
@@ -122,7 +146,7 @@
   }
 
   .group-btn-options {
-    font-size: 20px;
+    font-size: var(--font-size-mb);
     margin: 0.5rem;
   }
 }

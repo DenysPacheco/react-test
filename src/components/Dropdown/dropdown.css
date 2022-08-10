@@ -1,0 +1,29 @@
+.dropdown {
+  color: var(--secondary);
+}
+
+.dropdown-toggle {
+  background-color: var(--secondary-dark);
+  border: none;
+}
+
+.dropdown-menu {
+  background-color: var(--bg-list-light);
+  border: none;
+}
+
+.dropdown-menu-dark {
+  background-color: var(--bg-list-dark);
+}
+
+.dropdown-item:hover {
+  background-color: var(--secondary-darker);
+}
+
+.dropdown-item:focus {
+  background-color: var(--secondary-darker);
+}
+
+.dropdown-item:active {
+  color: var(--black);
+}

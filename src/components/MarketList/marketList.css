@@ -10,14 +10,14 @@
 .list-item {
   display: flex;
   justify-content: space-between;
-  background: #a6adb9;
+  background: var(--bg-list-light);
   width: auto;
   transition: all 0.3s ease-in-out;
 }
 
 .list-item-dark {
   /* background: #16181c; */
-  color: #c8c8c8;
+  color: var(--label-dark);
   transition: all 0.3s ease-in-out;
 }
 
@@ -61,6 +61,11 @@
 .marketlist-btn {
   min-height: 2rem;
   min-width: 5rem;
+}
+
+.list-item-btn > svg,
+.marketlist-btn > svg {
+  font-size: var(--btn-size);
 }
 
 @media only screen and (max-width: 480px) {
